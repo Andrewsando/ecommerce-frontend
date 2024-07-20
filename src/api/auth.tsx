@@ -3,7 +3,7 @@ import { ENV } from '@/app/utils/constants';
 export class Auth {
     async register(data: any) {
         try {
-            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.AUTH.REGISTER} `;
+            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.AUTH.REGISTER}`;
             const params = {
                 method: 'POST',
                 headers: {
@@ -16,6 +16,7 @@ export class Auth {
             const result = await response.json();
 
             if (response.status !== 200) throw result;
+            
             return result
         } catch (error) {
             throw error
