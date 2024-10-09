@@ -27,7 +27,7 @@ export default function RegisterForm() {
 
     return (
         <Form onSubmit={formik.handleSubmit}>
-            <Form.Group widths="equal">
+            <Form.Group >
                 <Form.Input
                     name="email"
                     type="text"
@@ -36,6 +36,27 @@ export default function RegisterForm() {
                     onChange={formik.handleChange}
                     error={formik.errors.email}
                 />
+                <Form.Input
+                    name="password"
+                    type="password"
+                    placeholder="Contraseña"
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    error={formik.errors.password}
+                />
+
+            </Form.Group>
+
+            <Form.Group >
+                <Form.Input
+                    name="name"
+                    type="text"
+                    placeholder="Nombre y apellidos"
+                    value={formik.values.name}
+                    onChange={formik.handleChange}
+                    error={formik.errors.name}
+                />
+
                 <Form.Input
                     name="username"
                     type="text"
@@ -46,26 +67,8 @@ export default function RegisterForm() {
                 />
             </Form.Group>
 
-            <Form.Group widths="equal">
-                <Form.Input
-                    name="name"
-                    type="text"
-                    placeholder="Nombre y apellidos"
-                    value={formik.values.name}
-                    onChange={formik.handleChange}
-                    error={formik.errors.name}
-                />
-                <Form.Input
-                    name="password"
-                    type="password"
-                    placeholder="Contraseña"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                    error={formik.errors.password}
-                />
-            </Form.Group>
-
-            <Form.Button type="submit" fluid loading={formik.isSubmitting}>
+            <Form.Button
+                type="submit" fluid loading={formik.isSubmitting}>
                 Registrarse
             </Form.Button>
         </Form>

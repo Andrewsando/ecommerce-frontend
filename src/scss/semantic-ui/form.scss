@@ -1,10 +1,16 @@
 .ui.form {
+
   label {
     position: relative;
     bottom: 8px;
   }
+  .fields {
+    display: block;
+  }
 
   .field {
+    margin-top: 10px;
+
     .ui.input {
       input {
         border: 2px solid $border-primary;
@@ -12,6 +18,8 @@
         color: $text-primary;
         padding: 14px;
         border-radius: 6px;
+        min-width: 210px;
+
 
         &:hover,
         &:active,
@@ -36,5 +44,25 @@
     margin: 0;
     padding: 15.5px 30px;
     border-radius: 6px;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media(min-width: 1300px) {
+  .ui.form {
+
+    .fields {
+      display: flex;
+      justify-content: space-between;
+    }
+    .field {
+
+      .ui.input {
+        input {
+          min-width: 245px;
+        }
+      }
+    }
   }
 }
