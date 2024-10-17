@@ -1,5 +1,4 @@
 import { ENV } from '@/app/utils/constants';
-import { log } from 'console';
 import { jwtDecode } from 'jwt-decode';
 
 

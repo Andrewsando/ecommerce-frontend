@@ -7,7 +7,8 @@ export const ENV = {
             LOGIN: 'auth/local',
 
         },
-        USERS_ME: "users/me"
+        USERS_ME: "users/me",
+        PLATFORM: "platforms",
     },
     TOKEN: "token",
 }
