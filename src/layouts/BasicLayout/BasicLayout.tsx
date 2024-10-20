@@ -1,7 +1,7 @@
 import styles from "./BasicLayout.module.scss"
 import { Container } from "semantic-ui-react";
 import classNames from "classnames";
-import { TopBar } from "@/components/Layout";
+import { TopBar, Footer} from "@/components/Layout";
 
 type PropsTypes = {
     children: React.ReactNode
@@ -29,8 +29,7 @@ export function BasicLayout(props: PropsTypes) {
                     {isContainer ? <Container>{children}</Container> : children}
                 </div>
             </Container>
-
-            {/* TODO: Footer*/}
+           <Footer/>
         </>
     );
 }
