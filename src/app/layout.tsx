@@ -1,6 +1,7 @@
 import { AuthProvider } from "@/contexts/AuthContext";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import 'semantic-ui-css/semantic.min.css'
 
 
 const inter = Inter({ subsets: ["latin"] });

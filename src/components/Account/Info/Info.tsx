@@ -4,7 +4,7 @@ import { DateTime } from 'luxon';
 import styles from './info.module.scss';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 
-export default function Info() {
+export function Info() {
     const { user } = useAuth();
 
     return (
