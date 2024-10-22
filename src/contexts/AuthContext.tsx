@@ -25,7 +25,7 @@ export function AuthProvider(props: any) {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
-    console.log(user)
+
 
     useEffect(() => {
         (async () => {
