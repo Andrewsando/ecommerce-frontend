@@ -1,0 +1,24 @@
+.content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    >div {
+        &:first-of-type {
+            width: 100%;
+            margin: 0 !important;
+
+        }
+
+        &:last-of-type {
+            margin-left: 15px !important;
+            margin-top: 0 !important;
+
+            button[type=submit] {
+                margin-top: 0 !important;
+            }
+        }
+
+    }
+
+}

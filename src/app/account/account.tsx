@@ -1,7 +1,7 @@
 "use client"
 import { BasicLayout } from "@/layouts";
 import { Tab } from "semantic-ui-react";
-import { Info } from "@/components/Account";
+import { Info, Settings } from "@/components/Account";
 import { useAuth } from "@/hooks";
 import { useRouter } from "next/navigation";
 import styles from "./account.module.scss";
@@ -46,7 +46,7 @@ export default function AccountPage() {
             menuItem: { icon: "settings", content: "Ajustes"},
             render: () => (
                 <Tab.Pane>
-                    <p>My Settings</p>
+                    <Settings.ChangeNameForm />
                 </Tab.Pane>
             )
         },
