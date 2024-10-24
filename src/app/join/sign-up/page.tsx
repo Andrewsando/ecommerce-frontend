@@ -9,11 +9,11 @@ export default function SignUpPage() {
 
             <JoinLayout>
                 <div className={styles.signIn}>
-                    <h3>Crear cuenta</h3>
+                    <h3>Create Account</h3>
                     <RegisterForm />
 
                     <div className={styles.actions}>
-                        <Link href="/join/sign-in">Atras</Link>
+                        <Link href="/join/sign-in">Go Back</Link>
                     </div>
                 </div>
             </JoinLayout>

@@ -19,8 +19,12 @@ export default function RegisterForm() {
             try {
                 await authCtrl.register(formValue);
                 router.push("/join/sign-in");
+                console.error('form',formValue);
+
             } catch (error) {
                 console.error(error);
+                console.error('formError',formValue);
+
             }
         },
     });
@@ -31,7 +35,7 @@ export default function RegisterForm() {
                 <Form.Input
                     name="email"
                     type="text"
-                    placeholder="Correo electronico"
+                    placeholder="Email"
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     error={formik.errors.email}
@@ -39,7 +43,7 @@ export default function RegisterForm() {
                 <Form.Input
                     name="password"
                     type="password"
-                    placeholder="Contraseña"
+                    placeholder="Password"
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     error={formik.errors.password}
@@ -49,27 +53,27 @@ export default function RegisterForm() {
 
             <Form.Group >
                 <Form.Input
-                    name="name"
+                    name="fullname"
                     type="text"
-                    placeholder="Nombre y apellidos"
-                    value={formik.values.name}
+                    placeholder="Full Name"
+                    value={formik.values.fullname}
                     onChange={formik.handleChange}
-                    error={formik.errors.name}
-                />
+                    error={formik.errors.fullname}
+                    />
 
                 <Form.Input
                     name="username"
                     type="text"
-                    placeholder="Nombre de usuario"
+                    placeholder="User name"
                     value={formik.values.username}
                     onChange={formik.handleChange}
-                    error={formik.errors.username}
+                    error={formik.errors.username} 
                 />
             </Form.Group>
 
             <Form.Button
                 type="submit" fluid loading={formik.isSubmitting}>
-                Registrarse
+                Register
             </Form.Button>
         </Form>
     );

@@ -5,6 +5,7 @@ import { Info, Settings } from "@/components/Account";
 import { useAuth } from "@/hooks";
 import { useRouter } from "next/navigation";
 import styles from "./account.module.scss";
+import { Separator } from "@/components/Shared";
 
 
 export default function AccountPage() {
@@ -47,6 +48,7 @@ export default function AccountPage() {
             render: () => (
                 <Tab.Pane>
                     <Settings.ChangeNameForm />
+                    <Separator height={80} />
                 </Tab.Pane>
             )
         },
