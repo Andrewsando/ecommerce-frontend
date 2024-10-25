@@ -4,8 +4,8 @@ import { Tab } from "semantic-ui-react";
 import { Info, Settings } from "@/components/Account";
 import { useAuth } from "@/hooks";
 import { useRouter } from "next/navigation";
-import styles from "./account.module.scss";
 import { Separator } from "@/components/Shared";
+import styles from "./account.module.scss";
 
 
 export default function AccountPage() {
@@ -50,6 +50,7 @@ export default function AccountPage() {
                     <Settings.ChangeNameForm />
                     <div className={styles.containerForm}>
                         <Settings.ChangeEmailForm />
+                        <Settings.ChangePasswordForm />
                     </div>
                     <Separator height={80} />
                 </Tab.Pane>

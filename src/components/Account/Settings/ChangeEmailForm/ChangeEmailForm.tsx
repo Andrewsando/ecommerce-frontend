@@ -18,7 +18,7 @@ export function ChangeEmailForm() {
             try {
                 await userCtrl.updateMe(user?.id, { email: formValue.email })
                 updateUser("email", formValue.email)
-                formik.handleReset();
+                formik.resetForm();
             } catch (error) {
                 console.log(error);
 
@@ -51,7 +51,7 @@ export function ChangeEmailForm() {
             <Form.Button
                 type="submit"
                 loading={formik.isSubmitting}>
-                Enviar
+                Send
             </Form.Button>
         </Form>
     )
