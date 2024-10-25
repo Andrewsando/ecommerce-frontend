@@ -13,10 +13,10 @@ export default function AccountPage() {
     const { logout, user } = useAuth();
     const router = useRouter();
 
-        if(!user) {
-            router.push("/");
-            return null;
-        } 
+    if (!user) {
+        router.push("/");
+        return null;
+    }
 
     const panes = [
         {
@@ -44,10 +44,13 @@ export default function AccountPage() {
             )
         },
         {
-            menuItem: { icon: "settings", content: "Ajustes"},
+            menuItem: { icon: "settings", content: "Ajustes" },
             render: () => (
                 <Tab.Pane>
                     <Settings.ChangeNameForm />
+                    <div className={styles.containerForm}>
+                        <Settings.ChangeEmailForm />
+                    </div>
                     <Separator height={80} />
                 </Tab.Pane>
             )
