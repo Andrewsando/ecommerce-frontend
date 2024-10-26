@@ -1,17 +1,24 @@
 import { useFormik } from 'formik';
 import { Form } from 'semantic-ui-react';
 import { initialValues, validationSchema } from './ChangePasswordForm.form';
+import { User } from '@/api';
+import { useAuth } from '@/hooks';
 import styles from './ChangePasswordForm.module.scss'
 
+const userCtrl = new User();
+
 export function ChangePasswordForm() {
-    
+
+    const { user, logout } = useAuth();
+
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: validationSchema(),
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-                console.log(formValue);
+                await userCtrl.updateMe(user?.id, { password: formValue.password });
+                logout()
 
             } catch (error) {
                 throw error
@@ -30,11 +37,11 @@ export function ChangePasswordForm() {
                 value={formik.values.password}
                 onChange={formik.handleChange}
                 error={formik.errors.password} />
-                
+
             <Form.Input
                 type='password'
                 name='repeatPassword'
-                placeholder='Repeat Password' 
+                placeholder='Repeat Password'
                 value={formik.values.repeatPassword}
                 onChange={formik.handleChange}
                 error={formik.errors.repeatPassword} />
