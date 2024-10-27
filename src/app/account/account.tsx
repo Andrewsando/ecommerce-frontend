@@ -1,7 +1,7 @@
 "use client"
 import { BasicLayout } from "@/layouts";
 import { Tab } from "semantic-ui-react";
-import { Info, Settings } from "@/components/Account";
+import { Address, Info, Settings } from "@/components/Account";
 import { useAuth } from "@/hooks";
 import { useRouter } from "next/navigation";
 import { Separator } from "@/components/Shared";
@@ -39,7 +39,8 @@ export default function AccountPage() {
             menuItem: "Addresses",
             render: () => (
                 <Tab.Pane>
-                    <p>My Addresses</p>
+                    <Address.AddAddress/>
+                    <Separator height={80} />
                 </Tab.Pane>
             )
         },
