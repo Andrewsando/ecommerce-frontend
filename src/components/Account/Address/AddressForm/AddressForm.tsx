@@ -2,8 +2,11 @@ import { useFormik } from "formik";
 import { Form } from "semantic-ui-react";
 import { initialValues, validationSchema } from "./AddressForm.form";
 
+interface AddressFormProps {
+    onClose: () => void;
+  }
 
-export function AddressForm(props) {
+export function AddressForm(props: AddressFormProps) {
 
     const { onClose } = props;
 
@@ -15,10 +18,8 @@ export function AddressForm(props) {
             try {
                 console.log(formValue);
                 onClose()
-
             } catch (error) {
                 console.log(error);
-
             }
         }
     });
