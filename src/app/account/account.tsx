@@ -6,6 +6,7 @@ import { useAuth } from "@/hooks";
 import { useRouter } from "next/navigation";
 import { Separator } from "@/components/Shared";
 import styles from "./account.module.scss";
+import { ListAddresses } from "@/components/Account/Address/ListAddresses";
 
 
 export default function AccountPage() {
@@ -40,6 +41,7 @@ export default function AccountPage() {
             render: () => (
                 <Tab.Pane>
                     <Address.AddAddress/>
+                    <Address.ListAddresses />
                     <Separator height={80} />
                 </Tab.Pane>
             )
