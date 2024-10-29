@@ -5,7 +5,7 @@ import { ListAddresses } from './ListAddresses';
 export const Address = {
     AddAddress,
     AddressForm,
-    ListAddresses
+    ListAddresses,
 }
 
 
