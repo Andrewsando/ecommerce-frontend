@@ -8,12 +8,13 @@ import { useAuth } from "@/hooks";
 const addressCtrl = new Address();
 
 interface AddressFormProps {
-    onClose: () => void;
+    onClose: () => void,
+    onReload: ()=> void
 }
 
 export function AddressForm(props: AddressFormProps) {
 
-    const { onClose } = props;
+    const { onClose, onReload } = props;
     const { user } = useAuth()
 
     const formik = useFormik({
@@ -23,8 +24,9 @@ export function AddressForm(props: AddressFormProps) {
         onSubmit: async (formValue) => {
             try {
                 await addressCtrl.create(formValue, user?.id)
-                formik.resetForm()
-                onClose()
+                formik.resetForm();
+                onReload();
+                onClose();
             } catch (error) {
                 console.log(error);
             }

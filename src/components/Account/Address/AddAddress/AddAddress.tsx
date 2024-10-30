@@ -4,10 +4,14 @@ import { Button } from 'semantic-ui-react';
 import { BasicModal } from '@/components/Shared';
 import { AddressForm } from '../AddressForm';
 
-export function AddAddress() {
+type Props = {
+    onReload: () => void
+}
 
+export function AddAddress(props: Props) {
+
+    const { onReload } = props
     const [show, setShow] = useState(false);
-
     const onOpenClose = () => setShow((prevState) => !prevState)
 
     return (
@@ -21,7 +25,7 @@ export function AddAddress() {
             </Button>
 
             <BasicModal show={show} onClose={onOpenClose} title='New Address'>
-                <AddressForm onClose={onOpenClose} />
+                <AddressForm onClose={onOpenClose} onReload={onReload} />
             </BasicModal>
         </>
     )

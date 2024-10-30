@@ -5,10 +5,16 @@ import { map } from "lodash"
 import { Address } from "./Address"
 import styles from './ListAddresses.module.scss'
 
+type Props = {
+    reload: boolean,
+    onReload: ()=> void
+}
+    
 const addressCtrl = new AddressCtrl()
 
-export function ListAddresses() {
+export function ListAddresses(props: Props) {
 
+    const { reload, onReload } = props;
     const [addresses, setAddresses] = useState(null)
     const { user } = useAuth()
 
@@ -23,7 +29,7 @@ export function ListAddresses() {
 
             }
         })()
-    }, [])
+    }, [reload])
 
     if (!addresses) return null
 

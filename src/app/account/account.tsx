@@ -7,18 +7,21 @@ import { useRouter } from "next/navigation";
 import { Separator } from "@/components/Shared";
 import styles from "./account.module.scss";
 import { ListAddresses } from "@/components/Account/Address/ListAddresses";
+import { useState } from "react";
 
 
 export default function AccountPage() {
 
     const { logout, user } = useAuth();
     const router = useRouter();
+    const [reload, setReload ] = useState(false);
 
     if (!user) {
         router.push("/");
         return null;
     }
 
+    const onReload = () => setReload(prevState => !prevState);
     const panes = [
         {
             menuItem: "Mis pedidos",
@@ -39,9 +42,9 @@ export default function AccountPage() {
         {
             menuItem: "Addresses",
             render: () => (
-                <Tab.Pane>
-                    <Address.AddAddress/>
-                    <Address.ListAddresses />
+                <Tab.Pane attached={false}>
+                    <Address.AddAddress onReload={onReload}/>
+                    <Address.ListAddresses reload={reload} onReload={onReload}/>
                     <Separator height={80} />
                 </Tab.Pane>
             )
