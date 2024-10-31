@@ -28,7 +28,7 @@ export function AddressForm(props: AddressFormProps) {
         onSubmit: async (formValue) => {
             try {
                 if(addressId){
-                    console.log('actualizar direccion');
+                    await addressCtrl.update(formValue, addressId)
                 } else{
                     await addressCtrl.create(formValue, user?.id)
                 }
