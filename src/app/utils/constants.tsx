@@ -11,6 +11,7 @@ export const ENV = {
         USERS: "users",
         PLATFORM: "platforms",
         ADDRESS: "addresses",
+        GAME: "games",
     },
     TOKEN: "token",
 }
