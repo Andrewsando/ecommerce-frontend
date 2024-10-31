@@ -1,12 +1,13 @@
 import { Button, Icon } from 'semantic-ui-react';
-import styles from './Address.module.scss'
 import { useState } from 'react';
 import { BasicModal, Confirm } from '@/components/Shared';
 import { AddressForm } from '../../AddressForm';
+import { Address as AddressCtrl } from '@/api';
+import styles from './Address.module.scss'
 
 
 interface AddressProps {
-    addressId: string;
+    addressId: number;
     address: {
         title: string,
         name: string,
@@ -18,6 +19,8 @@ interface AddressProps {
     onReload: () => boolean
 }
 
+const addressCtrl = new AddressCtrl();
+
 export function Address({ addressId, address, onReload }: AddressProps) {
 
     const [showEdit, setShowEdit] = useState(false)
@@ -25,6 +28,16 @@ export function Address({ addressId, address, onReload }: AddressProps) {
 
     const openCloseEdit = () => setShowEdit(prevState => !prevState);
     const openCloseConfirm = () => setShowConfirm(prevState => !prevState);
+
+
+    const onDelete = async () => {
+        try {
+            await addressCtrl.delete(addressId);
+            onReload()
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     return (
         <>
@@ -44,11 +57,11 @@ export function Address({ addressId, address, onReload }: AddressProps) {
                 </div>
             </div>
 
-            <Confirm 
-            open={showConfirm}
-            onCancel={openCloseConfirm}
-            onConfirm={()=> console.log('direccion eliminada')}
-            content='Seguro vas a eliminar?'
+            <Confirm
+                open={showConfirm}
+                onCancel={openCloseConfirm}
+                onConfirm={onDelete}
+                content='Seguro vas a eliminar?'
             />
 
             <BasicModal
@@ -59,8 +72,8 @@ export function Address({ addressId, address, onReload }: AddressProps) {
                     onClose={openCloseEdit}
                     onReload={onReload}
                     addressId={addressId}
-                    address={address} 
-                    />
+                    address={address}
+                />
             </BasicModal>
         </>
     )
