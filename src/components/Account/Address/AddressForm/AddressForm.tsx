@@ -8,10 +8,10 @@ import { useAuth } from "@/hooks";
 const addressCtrl = new Address();
 
 interface AddressFormProps {
-    onClose: () => boolean;
-    onReload: ()=> boolean;
-    address: Record <string, any>;
-    addressId: number;
+    onClose: () => void;
+    onReload: ()=> void;
+    address?: Record <string, any>;
+    addressId?: number;
 }
 
 export function AddressForm(props: AddressFormProps) {

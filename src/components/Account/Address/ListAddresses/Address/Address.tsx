@@ -16,7 +16,7 @@ interface AddressProps {
         city: string,
         postal_code: number
     };
-    onReload: () => boolean
+    onReload: () => void
 }
 
 const addressCtrl = new AddressCtrl();

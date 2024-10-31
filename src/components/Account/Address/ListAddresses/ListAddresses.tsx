@@ -7,7 +7,7 @@ import styles from './ListAddresses.module.scss'
 
 type Props = {
     reload: boolean;
-    onReload: ()=> boolean
+    onReload: ()=> void
 }
     
 const addressCtrl = new AddressCtrl()
