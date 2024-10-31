@@ -1,7 +1,7 @@
 import { Button, Icon } from 'semantic-ui-react';
 import styles from './Address.module.scss'
 import { useState } from 'react';
-import { BasicModal } from '@/components/Shared';
+import { BasicModal, Confirm } from '@/components/Shared';
 import { AddressForm } from '../../AddressForm';
 
 
@@ -21,8 +21,10 @@ interface AddressProps {
 export function Address({ addressId, address, onReload }: AddressProps) {
 
     const [showEdit, setShowEdit] = useState(false)
+    const [showConfirm, setShowConfirm] = useState(false)
 
     const openCloseEdit = () => setShowEdit(prevState => !prevState);
+    const openCloseConfirm = () => setShowConfirm(prevState => !prevState);
 
     return (
         <>
@@ -36,11 +38,18 @@ export function Address({ addressId, address, onReload }: AddressProps) {
                     <Button primary icon onClick={openCloseEdit}>
                         <Icon name="pencil" />
                     </Button>
-                    <Button primary icon>
+                    <Button primary icon onClick={openCloseConfirm}>
                         <Icon name="delete" />
                     </Button>
                 </div>
             </div>
+
+            <Confirm 
+            open={showConfirm}
+            onCancel={openCloseConfirm}
+            onConfirm={()=> console.log('direccion eliminada')}
+            content='Seguro vas a eliminar?'
+            />
 
             <BasicModal
                 show={showEdit}
@@ -50,7 +59,8 @@ export function Address({ addressId, address, onReload }: AddressProps) {
                     onClose={openCloseEdit}
                     onReload={onReload}
                     addressId={addressId}
-                    address={address} />
+                    address={address} 
+                    />
             </BasicModal>
         </>
     )
