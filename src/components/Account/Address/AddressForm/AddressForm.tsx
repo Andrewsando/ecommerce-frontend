@@ -8,22 +8,30 @@ import { useAuth } from "@/hooks";
 const addressCtrl = new Address();
 
 interface AddressFormProps {
-    onClose: () => void,
-    onReload: ()=> void
+    onClose: () => boolean;
+    onReload: ()=> boolean;
+    address: Record <string, any>;
+    addressId: number;
 }
 
 export function AddressForm(props: AddressFormProps) {
 
-    const { onClose, onReload } = props;
+    const { onClose, onReload, address, addressId } = props;
     const { user } = useAuth()
 
+    console.log(address);
+    
     const formik = useFormik({
-        initialValues: initialValues(),
+        initialValues: initialValues(address),
         validationSchema: validationSchema,
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-                await addressCtrl.create(formValue, user?.id)
+                if(addressId){
+                    console.log('actualizar direccion');
+                } else{
+                    await addressCtrl.create(formValue, user?.id)
+                }
                 formik.resetForm();
                 onReload();
                 onClose();

@@ -4,7 +4,7 @@ import style from './BasicModal.module.scss';
 type MyComponentProps = {
     children: React.ReactNode,
     show: boolean,
-    onClose: ()=>void,
+    onClose: ()=> boolean,
     title: string
 };
 

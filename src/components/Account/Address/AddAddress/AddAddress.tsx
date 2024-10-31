@@ -5,7 +5,7 @@ import { BasicModal } from '@/components/Shared';
 import { AddressForm } from '../AddressForm';
 
 type Props = {
-    onReload: () => void
+    onReload: () => boolean;
 }
 
 export function AddAddress(props: Props) {

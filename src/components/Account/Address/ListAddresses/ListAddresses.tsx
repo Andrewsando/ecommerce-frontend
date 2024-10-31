@@ -6,8 +6,8 @@ import { Address } from "./Address"
 import styles from './ListAddresses.module.scss'
 
 type Props = {
-    reload: boolean,
-    onReload: ()=> void
+    reload: boolean;
+    onReload: ()=> boolean
 }
     
 const addressCtrl = new AddressCtrl()
@@ -39,7 +39,8 @@ export function ListAddresses(props: Props) {
                 <Address 
                 key={address.id} 
                 addressId={address.id} 
-                address={address.attributes} />
+                address={address.attributes}
+                onReload={onReload} />
             ))}
         </div>
     )
