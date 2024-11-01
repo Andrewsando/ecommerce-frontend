@@ -2,6 +2,8 @@ import { Game } from "@/api";
 import { useEffect, useState } from "react"
 import { Image, Container } from "semantic-ui-react";
 import { DateTime } from 'luxon';
+import { fn } from '@/app/utils/functions'
+import { Label } from "@/components/Shared";
 import Link from 'next/link'
 import styles from './BannerLastGamePublished.module.scss'
 
@@ -27,6 +29,7 @@ export function BannerLastGamePublished() {
 
     const wallpaper = game.attributes.wallpaper
     const releaseDate = new Date(game.attributes.releaseDate).toISOString()
+    const price = fn.calcDiscountedPrice(game.attributes.price, game.attributes.discount)
 
     return (
         <div className={styles.container}>
@@ -39,8 +42,8 @@ export function BannerLastGamePublished() {
 
                     <h2>{game.attributes.title}</h2>
                     <p>{game.attributes.price}</p>
-                    <label>40%</label>
-                    <span className={styles.finalPrice}>15 COP</span>
+                    <Label.Discount>{game.attributes.discount}</Label.Discount>
+                    <span className={styles.finalPrice}>{price}</span>
                 </Container>
             </Link>
         </div>
