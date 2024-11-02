@@ -4,10 +4,10 @@ import classNames from "classnames";
 import { TopBar, Footer} from "@/components/Layout";
 
 type PropsTypes = {
-    children: React.ReactNode
-        isOpenSearch: boolean
-        isContainer: boolean
-        relative: boolean
+    children?: React.ReactNode
+        isOpenSearch?: boolean
+        isContainer?: boolean
+        relative?: boolean
 }
 
 
