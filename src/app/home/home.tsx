@@ -1,6 +1,6 @@
 import { BasicLayout } from "@/layouts";
 import { Home } from "@/components/Home";
-import { BarTrust, Separator } from "@/components/Shared";
+import { BannerAd, BarTrust, Separator } from "@/components/Shared";
 import { Container } from "semantic-ui-react";
 
 
@@ -30,6 +30,17 @@ export default function HomePage() {
                 />
             </Container>
             <Separator height={100} />
+
+            <BannerAd 
+            title='Register and get the best prices'
+            subtitle='Compare with other games and choose yours!'
+            btnTitle='Enter now'
+            btnLink="/account"
+            image='/images/img01.png'
+            />
+
+            <Separator height={50} />
+
 
         </BasicLayout>
     );
