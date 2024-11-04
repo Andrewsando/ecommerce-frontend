@@ -1,3 +1,4 @@
+"use client";
 import { Image } from "semantic-ui-react";
 import { Account } from "../Account";
 import styles from "./TopBar.module.scss";

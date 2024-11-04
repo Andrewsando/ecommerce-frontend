@@ -1,3 +1,4 @@
+"use client"
 import { Button, Icon, Label } from "semantic-ui-react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks";

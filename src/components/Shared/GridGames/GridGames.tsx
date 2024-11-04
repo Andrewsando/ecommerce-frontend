@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Label } from '../Label';
 
 
-
 type GridGamesProps = {
     games: Array<{ id: string; attributes: any }>,
 }
@@ -13,7 +12,7 @@ type GridGamesProps = {
 export function GridGames(props: GridGamesProps) {
 
     const { games } = props;
-    console.log(games);
+    console.log('recibido', games);
     
 
     return (
@@ -24,7 +23,7 @@ export function GridGames(props: GridGamesProps) {
                 href={`/${game.attributes.slug}`} 
                 className={styles.game}>
                     <div>
-                        <img src={game.attributes.cover.data.attributes.url} />
+                        <img src={game.attributes.cover.data.attributes.url} alt={game.attributes.title} />
                         {game.attributes.discount > 0 &&(
                             <Label.Discount className={styles.discount}>
                                 {`-${game.attributes.discount}%`}

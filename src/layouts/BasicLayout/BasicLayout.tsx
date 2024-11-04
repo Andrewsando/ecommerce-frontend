@@ -1,3 +1,4 @@
+"use client";
 import styles from "./BasicLayout.module.scss"
 import { Container } from "semantic-ui-react";
 import classNames from "classnames";
@@ -26,7 +27,8 @@ export function BasicLayout(props: PropsTypes) {
            <TopBar isOpenSearch={isOpenSearch}/>
             <Container fluid>
                 <div className={classNames({ [styles.relative]: relative })}>
-                    {isContainer ? <Container>{children}</Container> : children}
+                    {/* {isContainer ? <Container>{children}</Container> : children} */}
+                    {children}
                 </div>
             </Container>
            <Footer/>

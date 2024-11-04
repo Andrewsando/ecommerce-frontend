@@ -26,6 +26,8 @@ export class Platform {
             const result = await response.json();
 
             if (response.status !== 200) throw result;
+            console.log(result.data[0]);
+            
             return result.data[0];
         } catch (error) {
             throw error;
