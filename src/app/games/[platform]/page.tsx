@@ -1,5 +1,5 @@
 import { Platform, Game } from "@/api"
-import { GridGames, Separator } from "@/components/Shared";
+import { GridGames, NoResult, Separator } from "@/components/Shared";
 import { BasicLayout } from "@/layouts";
 import { size } from "lodash";
 import { Container } from "semantic-ui-react";
@@ -29,7 +29,7 @@ export default async function PlatformPage({ params, searchParams }:
                 {hasProducts ? (
                     <GridGames games={responseGame.data} />
                 ) : (
-                    <p>No results</p>
+                    <NoResult text={`The category ${platform} does not have products yet`}/>
                 )}
                 <Separator height={100} />
 
