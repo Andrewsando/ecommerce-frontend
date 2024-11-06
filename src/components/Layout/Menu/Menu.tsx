@@ -2,6 +2,7 @@ import { Image, Icon, Input } from "semantic-ui-react";
 import { useEffect, useState } from "react";
 import { Platform as PlatformAPI } from "@/api"; // Renombrado aquí
 import { map } from "lodash";
+import { useRouter, useSearchParams } from "next/navigation";
 import classNames from "classnames";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
@@ -9,7 +10,8 @@ import styles from "./Menu.module.scss";
 import Link from "next/link";
 
 interface MenuProps {
-  isOpenSearch: boolean;
+  isOpenSearch: boolean,
+  params: { platform: string }
 }
 
 interface Platform {
@@ -29,10 +31,16 @@ interface Platform {
 
 const platformCtrl = new PlatformAPI(); // Usando el nuevo nombre aquí
 
-export function Menu({ isOpenSearch }: MenuProps) {
+export function Menu({ isOpenSearch, params }: MenuProps) {
   const [platforms, setPlatforms] = useState<Platform[] | null>(null); // Asegúrate de definir bien el tipo
-  const [showSearch, setShowSearch] = useState(false);
+  const [showSearch, setShowSearch] = useState(isOpenSearch);
+  const [searchText, setSearchText] = useState("");
+  const searchParams = useSearchParams();
   const openCloseSearch = () => setShowSearch(prevState => !prevState);
+  const router = useRouter()
+  console.log('router', router);
+  console.log('params', params);
+
 
   useEffect(() => {
     (async () => {
@@ -45,6 +53,15 @@ export function Menu({ isOpenSearch }: MenuProps) {
     })();
   }, []);
 
+  useEffect(() => {
+    const search = searchParams.get('s') || "";
+    setSearchText(search);
+  }, [searchParams]);
+
+  const onSearch = (text: string) => {
+    router.replace(`/search?s=${text}`)
+
+  }
   return (
     <div className={styles.platforms}>
       {map(platforms, (platform: Platform) => (
@@ -66,7 +83,9 @@ export function Menu({ isOpenSearch }: MenuProps) {
           id="search-games"
           placeholder="Search"
           className={styles.input}
-          focus
+          focus={true}
+          onChange={(_, data) => onSearch(data.value)}
+          value={searchText}
         />
         <CloseIcon
           className={styles.closeInput}

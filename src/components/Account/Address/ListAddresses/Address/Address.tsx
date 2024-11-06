@@ -1,3 +1,4 @@
+"use client"
 import { Button, Icon } from 'semantic-ui-react';
 import { useState } from 'react';
 import { BasicModal, Confirm } from '@/components/Shared';
@@ -63,18 +64,7 @@ export function Address({ addressId, address, onReload }: AddressProps) {
                 onConfirm={onDelete}
                 content='Seguro vas a eliminar?'
             />
-
-            <BasicModal
-                show={showEdit}
-                onClose={openCloseEdit}
-                title="Editar dirección" >
-                <AddressForm
-                    onClose={openCloseEdit}
-                    onReload={onReload}
-                    addressId={addressId}
-                    address={address}
-                />
-            </BasicModal>
+            
         </>
     )
 }

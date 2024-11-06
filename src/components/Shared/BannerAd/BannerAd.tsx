@@ -6,17 +6,17 @@ interface BannerAdProps {
     title: string,
     subtitle: string,
     btnTitle: string,
-    btnLink: string, 
+    btnLink: string,
     image: string
 }
 
-export function BannerAd(props: BannerAdProps){
+export function BannerAd(props: BannerAdProps) {
 
     const { title, subtitle, btnTitle, btnLink, image } = props
-    return(
+    return (
         <div className={styles.container}>
             <Container className={styles.containerImage}>
-                <Image src={image}/>
+                <Image src={image} />
 
             </Container>
 

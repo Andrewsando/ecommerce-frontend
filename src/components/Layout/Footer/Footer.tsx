@@ -1,3 +1,4 @@
+"use client"
 import { Container, Image, Button } from 'semantic-ui-react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -11,7 +12,7 @@ export function Footer() {
                 <div className={styles.columns}>
                     <div>
                         <Link href='/'>
-                            <Image src='images/logo.png' alt='gaming' />
+                            <Image src='/images/logo.png' alt='gaming' />
                         </Link>
                     </div>
                     <div>
