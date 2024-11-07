@@ -29,10 +29,10 @@ interface Platform {
   };
 }
 
-const platformCtrl = new PlatformAPI(); // Usando el nuevo nombre aquí
+const platformCtrl = new PlatformAPI();
 
 export function Menu({ isOpenSearch, params }: MenuProps) {
-  const [platforms, setPlatforms] = useState<Platform[] | null>(null); // Asegúrate de definir bien el tipo
+  const [platforms, setPlatforms] = useState<Platform[] | null>(null);
   const [showSearch, setShowSearch] = useState(isOpenSearch);
   const [searchText, setSearchText] = useState("");
   const searchParams = useSearchParams();
@@ -54,13 +54,13 @@ export function Menu({ isOpenSearch, params }: MenuProps) {
   useEffect(() => {
     const search = searchParams.get('s') || "";
     setSearchText(search);
-  }, [searchParams]);
+  }, []);
 
   const onSearch = (text: string) => {
+    setSearchText(text)
     router.replace(`/search?s=${text}`)
-    
-
   }
+
   return (
     <div className={styles.platforms}>
       {map(platforms, (platform: Platform) => (
