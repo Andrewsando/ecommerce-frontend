@@ -1,19 +1,43 @@
-'use client'
+import { Game } from "@/api";
+import { GridGames, NoResult, Pagination, Separator } from "@/components/Shared";
 import { BasicLayout } from "@/layouts";
-import { useEffect } from "react";
+import { size } from "lodash";
+import { Container } from "semantic-ui-react";
 
-export default function SearchPage(){
+export default async function SearchPage({ searchParams }:
+    {
+        searchParams: { s: string }
+    }) {
 
-    useEffect(() => {
+    const gameCtrl = new Game();
+    const response = await gameCtrl.searchGames(searchParams.s, 1);
 
-                document.getElementById('search-games')?.focus();
-    }, [])
+    const paginationGame = response.meta.pagination
+    const hasProducts = size(response.data) > 0
 
     return (
         <>
-        <BasicLayout relative isOpenSearch={true}>
-            <h2>We are searching</h2>
-        </BasicLayout>
+            <BasicLayout relative isOpenSearch={true}>
+                <Container>
+                    <Separator height={50} />
+                    <h2>Searching: {searchParams.s}</h2>
+                    {hasProducts ? (
+                        <>
+                            <GridGames games={response.data} />
+                            <Separator height={30} />
+                            <Pagination
+                                currentPage={response.page}
+                                pageSize={response.pageSize}
+                                totalPages={response.pageCount}
+                            />
+                        </>
+                    ) : (
+                        <NoResult text={`There are not products`} />
+                    )}
+                    <Separator height={100} />
+
+                </Container>
+            </BasicLayout>
         </>
     )
 }
