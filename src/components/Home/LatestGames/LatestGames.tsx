@@ -10,7 +10,7 @@ const gameCtrl = new Game();
 interface LatestGamesProps {
     title?: string,
     limit?: number,
-    platformId?: number | null
+    platformId?: null | undefined;
 }
 
 export function LatestGames(props: LatestGamesProps) {
@@ -24,8 +24,6 @@ export function LatestGames(props: LatestGamesProps) {
             try {
                 const response = await gameCtrl.getLatestPublished({ limit, platformId })
                 setGames(response.data);
-                console.log(response);
-
             } catch (error) {
                 console.log(error);
 

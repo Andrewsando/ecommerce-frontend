@@ -18,7 +18,7 @@ interface Platform {
   id: string;
   attributes: {
     slug: string;
-    images: {
+    icon: {
       data: {
         attributes: {
           url: string;
@@ -44,9 +44,11 @@ export function Menu({ isOpenSearch, params }: MenuProps) {
     (async () => {
       try {
         const response = await platformCtrl.getAll();
+        
         setPlatforms(response.data);
+        
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     })();
   }, []);
@@ -65,7 +67,7 @@ export function Menu({ isOpenSearch, params }: MenuProps) {
     <div className={styles.platforms}>
       {map(platforms, (platform: Platform) => (
         <Link key={platform.id} href={`/games/${platform.attributes.slug}`}>
-          <Image src={platform.attributes.images.data.attributes.url} />
+          <Image src={platform.attributes.icon.data.attributes.url} /> 
           {platform.attributes.Title}
         </Link>
       ))}

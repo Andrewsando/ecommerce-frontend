@@ -17,14 +17,13 @@ export function ChangeNameForm() {
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-                console.log('se mandaaaa');
                 if(user){
                     await userCtrl.updateMe(user?.id, formValue)
                 } else {
                     console.log(" not user")
                 }
             } catch (error) {
-                console.log(123,error);
+                console.error(error);
             }
         }
     })
