@@ -1,19 +1,20 @@
-'use client'
+import { Game } from "@/api";
 import { BasicLayout } from "@/layouts";
-import { useEffect } from "react";
 
-export default function SearchPage(){
+export default async function SearchPage({ searchParams }:
+    {
+        searchParams: { s: string }
+    }) {
 
-    useEffect(() => {
-
-                document.getElementById('search-games')?.focus();
-    }, [])
+        const gameCtrl = new Game();
+        const response = await gameCtrl.searchGames(searchParams.s, 1);
+        console.log(response.data);
 
     return (
         <>
-        <BasicLayout relative isOpenSearch={true}>
-            <h2>We are searching</h2>
-        </BasicLayout>
+            <BasicLayout relative isOpenSearch={true}>
+                <h2>{searchParams.s}</h2>
+            </BasicLayout>
         </>
     )
 }

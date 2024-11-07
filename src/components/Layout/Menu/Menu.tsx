@@ -38,8 +38,6 @@ export function Menu({ isOpenSearch, params }: MenuProps) {
   const searchParams = useSearchParams();
   const openCloseSearch = () => setShowSearch(prevState => !prevState);
   const router = useRouter()
-  console.log('router', router);
-  console.log('params', params);
 
 
   useEffect(() => {
@@ -60,6 +58,7 @@ export function Menu({ isOpenSearch, params }: MenuProps) {
 
   const onSearch = (text: string) => {
     router.replace(`/search?s=${text}`)
+    
 
   }
   return (
