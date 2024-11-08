@@ -1,27 +1,27 @@
 @import "~/src/scss/index.scss";
 
-.panel{
-position: relative;
-display: flex !important;
-margin-top: -150px;
+.panel {
+    position: relative;
+    display: flex !important;
+    margin-top: -150px;
 }
 
-.imgContainer{
+.imgContainer {
     width: 50%;
     padding-right: 12px;
 
-    > img {
+    >img {
         border-radius: 15px;
     }
 
 }
 
-.actionsContainer{
+.actionsContainer {
     width: 50%;
     padding-left: 12px;
     height: 100%;
 
-    > div {
+    >div {
         background-color: $background-quaternary__blur;
         backdrop-filter: blur(15px);
         border-radius: 15px;
@@ -33,50 +33,51 @@ margin-top: -150px;
 }
 
 .moreInfo {
-        background-color: $background-quaternary__blur;
-        backdrop-filter: blur(15px);
+    background-color: $background-quaternary__blur;
+    backdrop-filter: blur(15px);
+    display: flex;
+    padding: 6px 15px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+
+
+    >span {
         display: flex;
-        padding: 6px 15px;
-        border-radius: 50px;
-        margin-bottom: 10px;
-        margin-top: 20px;
+        align-items: center;
+        border-left: 1px solid $border-primary;
+        padding-right: 10px;
+        font-size: 12px;
 
+        &:first-of-type {
+            border-left: 0;
 
-        > span {
-            display: flex;
-            align-items: center;
-            border-left: 1px solid $border-primary;
-            padding-right: 10px;
-            font-size: 12px;
+            >img {
+                filter: brightness(0) invert(1);
+                height: 18px;
+                margin-right: 10px;
 
-            &:first-of-type {
-                border-left: 0;
-                > img {
-                    filter: brightness(0) invert(1);
-                    height: 18px;
-                    margin-right: 10px;
-
-                }
-            }
-
-            &:last-of-type{
-                border-right: 0;
-                padding-right: 0;
-                margin-right: 0;
-                padding-left: 10px;
-
-                i {
-                    display: flex;
-                    align-items: center;
-                    color: $success;
-                    margin-right: 5px;
-                    font-size: 14px;
-                }
             }
         }
+
+        &:last-of-type {
+            border-right: 0;
+            padding-right: 0;
+            margin-right: 0;
+            padding-left: 10px;
+
+            i {
+                display: flex;
+                align-items: center;
+                color: $success;
+                margin-right: 5px;
+                font-size: 14px;
+            }
+        }
+    }
 }
 
-.price{
+.price {
     margin-bottom: 30px;
     margin-top: 15px;
 
@@ -85,7 +86,7 @@ margin-top: -150px;
         text-decoration: line-through;
     }
 
-    > i {
+    >i {
         font-size: 12px;
     }
 }
@@ -97,6 +98,14 @@ margin-top: -150px;
     font-size: 18px;
 }
 
-.price{
+.price {
     font-size: 35px;
+}
+
+.heart {
+    margin: 0 !important;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px !important;
 }
