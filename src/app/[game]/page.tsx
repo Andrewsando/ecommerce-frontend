@@ -27,7 +27,7 @@ export default async function Game({ params, searchParams }:
             <Separator height={30} />
             <GameComponent.Media 
             video={response.attributes.video}
-            screenshots={response.attributes.video} 
+            screenshots={response.attributes.screenshots} 
             />
             <Separator height={50} />
 
