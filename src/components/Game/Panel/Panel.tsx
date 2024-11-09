@@ -10,7 +10,6 @@ type PanelProps = {
 
 export default function Panel({ gameId, game }: PanelProps) {
 
-    console.log('lerooo', game.platform.data.attributes.title);
 
     const platform = game.platform.data;
     const buyPrice = fn.calcDiscountedPrice(game.price, game.discount)

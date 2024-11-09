@@ -19,13 +19,19 @@ export default async function Game({ params, searchParams }:
         const wallpaper = response.attributes.wallpaper.data.attributes.url
 
     return (
-        <>
         <BasicLayout>
             <GameComponent.HeaderWallpaper image={wallpaper} />
             <GameComponent.Panel gameId={response.id} game={response.attributes}/>
             <Separator height={50} />
+            <GameComponent.Info game={response.attributes}/>
+            <Separator height={30} />
+            <GameComponent.Media 
+            video={response.attributes.video}
+            screenshots={response.attributes.video} 
+            />
+            <Separator height={50} />
+
         </BasicLayout>
-        </>
 
     )
 }

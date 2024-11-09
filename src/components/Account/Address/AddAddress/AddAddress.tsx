@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react'
 import styles from './AddAddress.module.scss'
 import { Button } from 'semantic-ui-react';
@@ -5,9 +6,7 @@ import { BasicModal } from '@/components/Shared';
 import { AddressForm } from '../AddressForm';
 
 type Props = {
-
     onReload: () => void; 
-
 }
 
 export function AddAddress(props: Props) {

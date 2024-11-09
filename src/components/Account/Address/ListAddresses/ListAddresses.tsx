@@ -1,3 +1,4 @@
+"use client"
 import { Address as AddressCtrl } from '@/api'
 import { useEffect, useState } from 'react'
 import { useAuth } from '@/hooks'
