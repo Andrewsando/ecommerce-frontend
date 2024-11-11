@@ -18,8 +18,6 @@ export function AddressForm(props: AddressFormProps) {
 
     const { onClose, onReload, address, addressId } = props;
     const { user } = useAuth()
-
-    console.log(address);
     
     const formik = useFormik({
         initialValues: initialValues(address),
@@ -36,7 +34,7 @@ export function AddressForm(props: AddressFormProps) {
                 onReload();
                 onClose();
             } catch (error) {
-                console.log(error);
+                console.error(error);
             }
         }
     });

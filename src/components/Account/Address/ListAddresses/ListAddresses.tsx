@@ -1,3 +1,4 @@
+"use client"
 import { Address as AddressCtrl } from '@/api'
 import { useEffect, useState } from 'react'
 import { useAuth } from '@/hooks'
@@ -25,7 +26,7 @@ export function ListAddresses(props: Props) {
                 setAddresses(response.data)
 
             } catch (error) {
-                console.log(error);
+                console.error(error);
 
             }
         })()

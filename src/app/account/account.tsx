@@ -1,5 +1,4 @@
-"use client";
-
+'use client'
 import { BasicLayout } from "@/layouts";
 import { Tab } from "semantic-ui-react";
 import { Address, Info, Settings } from "@/components/Account";

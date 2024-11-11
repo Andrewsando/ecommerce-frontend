@@ -12,8 +12,7 @@ type GridGamesProps = {
 export function GridGames(props: GridGamesProps) {
 
     const { games } = props;
-    console.log('recibido', games);
-    
+
 
     return (
         <div className={styles.gridGames}>

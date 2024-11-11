@@ -16,16 +16,18 @@ export function Account() {
     const goToAccount = () => router.push('/account');
 
     const goToCart = () => {
-        if (!user) {goToLogin();
-            console.log('144')}
-        else {router.push('/cart')
-        console.log('123')}
+        if (!user) {
+            goToLogin();
+        }
+        else {
+            router.push('/cart')
+        }
     }
     return (
         <div className={styles.account}>
             <Button icon className={styles.cart}>
                 <AddShoppingCartIcon name="shop" onClick={goToCart} />
-                {total > 0 &&  <Label circular>{total}</Label>}
+                {total > 0 && <Label circular>{total}</Label>}
             </Button>
 
             {!user ? (
