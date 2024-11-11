@@ -32,15 +32,16 @@ useEffect(() => {
     })()
 }, [gameId])
 
-const addWishlist = ( ) =>{
-    console.log('addwishlist');
-    
-}
+const addWishlist = async ( ) =>{
+    const response = await wishlistCtrl.add(user?.id, gameId)
+    console.log(response);    
+    setHasWishList(response);
 
+}
 const deleteWishlist = ( ) =>{
     console.log('deleteWishlist');
-    
 }
+
 if(hasWishList === null) return null;
 
 
