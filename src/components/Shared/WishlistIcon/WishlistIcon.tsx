@@ -15,34 +15,39 @@ const wishlistCtrl = new Wishlist()
 
 export function WishlistIcon({ gameId, className }: WishlistIconProps) {
 
-const [hasWishList, setHasWishList] = useState<boolean | null>(null);
-const { user } = useAuth()
+    const [hasWishList, setHasWishList] = useState<any>(null);
+    const { user } = useAuth()
 
-useEffect(() => {
-    (async () => {
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await wishlistCtrl.check(user?.id, gameId)
+                setHasWishList(response);
+
+            } catch (error) {
+                setHasWishList(false);
+                console.error(error);
+
+            }
+        })()
+    }, [gameId])
+
+    const addWishlist = async () => {
+        const response = await wishlistCtrl.add(user?.id, gameId)
+        console.log(response);
+        setHasWishList(response);
+
+    }
+    const deleteWishlist = async () => {
         try {
-            const response = await wishlistCtrl.check(user?.id, gameId)
-            setHasWishList(response);
-            
-        } catch (error) {
+            await wishlistCtrl.delete(hasWishList.id)
             setHasWishList(false);
-            console.error(error);
-
+        } catch (error) {
+            throw error
         }
-    })()
-}, [gameId])
+    }
 
-const addWishlist = async ( ) =>{
-    const response = await wishlistCtrl.add(user?.id, gameId)
-    console.log(response);    
-    setHasWishList(response);
-
-}
-const deleteWishlist = ( ) =>{
-    console.log('deleteWishlist');
-}
-
-if(hasWishList === null) return null;
+    if (hasWishList === null) return null;
 
 
     return (
@@ -52,6 +57,6 @@ if(hasWishList === null) return null;
             className={classNames(styles.WishlistIcon, {
                 [className]: className,
             })}
-            />
-        )
-    }
+        />
+    )
+}
