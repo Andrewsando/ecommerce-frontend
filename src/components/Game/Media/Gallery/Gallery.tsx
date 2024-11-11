@@ -1,9 +1,10 @@
 'use client'
 import { Image } from 'semantic-ui-react'
-import styles from './Gallery.module.scss'
 import { map } from 'lodash';
 import { FullModal } from '@/components/Shared';
 import { useState } from 'react';
+import styles from './Gallery.module.scss';
+import Slider from 'react-slick';
 
 interface GalleryProps {
     screenshots: any
@@ -16,7 +17,18 @@ export default function Gallery({ screenshots }: GalleryProps) {
     const screenshotsClone = [...screenshots.data];
     const principalImage = screenshotsClone.shift();
 
-    const onOpenClose = () => setShow(prevState => !prevState )
+    const onOpenClose = () => setShow(prevState => !prevState);
+    const settings = {
+        dots: true,
+        dotsClass: styles.dots,
+        infinite: true,
+        slidersToShow: 1,
+        slidersToScroll: 1,
+        arrows: false,
+        customPaging: function(index:any){
+            return< Image src={screenshots.data[index].attributes.url} />
+        }
+    }
 
     return (
         <>
@@ -44,7 +56,15 @@ export default function Gallery({ screenshots }: GalleryProps) {
             <FullModal
                 show={show}
                 onClose={onOpenClose}>
-                <h2>slider de imagenes</h2>
+                <div className={styles.carouselContainer}>
+                    <Slider {...settings}>
+                        {map(screenshots.data, (screenshot) => (
+                            <div key={screenshot.id}>
+                                <Image src={screenshot.attributes.url} />
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
             </FullModal>
         </>
     )
