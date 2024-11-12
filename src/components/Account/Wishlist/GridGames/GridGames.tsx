@@ -1,10 +1,10 @@
 import { map } from 'lodash';
 import styles from './GridGames.module.scss'
 import Link from 'next/link';
-import { Label } from '@/components/Shared';
+import { Label, WishlistIcon } from '@/components/Shared';
 import { fn } from '@/app/utils/functions';
 
-export function GridGames({ wishlist }: any) {
+export function GridGames({ wishlist, onReload }: any) {
 
 
     return (
@@ -37,6 +37,11 @@ export function GridGames({ wishlist }: any) {
                                 </span>
                             </div>
                         </Link>
+                        <WishlistIcon 
+                        gameId={game.data.id} 
+                        className={styles.wishlistIcon} 
+                        removeCallback={onReload}
+                        />
                     </div>
                 )
             })}

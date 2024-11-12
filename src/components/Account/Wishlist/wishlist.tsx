@@ -10,7 +10,10 @@ const wishlistCtrl = new WishlistCtrl()
 export function Wishlist() {
 
     const [wishlist, setWishlist] = useState(null)
+    const [reload, setReload] = useState(false)
     const { user } = useAuth()
+
+    const onReload =()=> setReload((prevState) => !prevState)
 
     useEffect(() => {
         (async () => {
@@ -21,10 +24,10 @@ export function Wishlist() {
                 console.error(error);
             }
         })()
-    }, [])
+    }, [reload])
 
     return size(wishlist) === 1 ? (
         <NoResult text="You don't have any game on the wishlist" />
-    ): ( <GridGames wishlist={wishlist} />
+    ): ( <GridGames wishlist={wishlist} onReload={onReload} />
     )
 }

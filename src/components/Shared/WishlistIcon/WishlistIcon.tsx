@@ -9,11 +9,12 @@ import { useAuth } from '@/hooks'
 interface WishlistIconProps {
     gameId: number,
     className: any,
+    removeCallback:()=> void
 }
 
 const wishlistCtrl = new Wishlist()
 
-export function WishlistIcon({ gameId, className }: WishlistIconProps) {
+export function WishlistIcon({ gameId, className, removeCallback}: WishlistIconProps) {
 
     const [hasWishList, setHasWishList] = useState<any>(null);
     const { user } = useAuth()
@@ -42,6 +43,8 @@ export function WishlistIcon({ gameId, className }: WishlistIconProps) {
         try {
             await wishlistCtrl.delete(hasWishList.id)
             setHasWishList(false);
+
+            if(removeCallback) removeCallback();
         } catch (error) {
             throw error
         }
