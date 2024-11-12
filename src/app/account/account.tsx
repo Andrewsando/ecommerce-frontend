@@ -1,10 +1,10 @@
 'use client'
 import { BasicLayout } from "@/layouts";
 import { Tab } from "semantic-ui-react";
-import { Address, Info, Settings } from "@/components/Account";
+import { Address, Info, Settings, Wishlist } from "@/components/Account";
 import { useAuth } from "@/hooks";
 import { useRouter } from "next/navigation";
-import { Separator } from "@/components/Shared";
+import { Separator, WishlistIcon } from "@/components/Shared";
 import styles from "./account.module.scss";
 import { ListAddresses } from "@/components/Account/Address/ListAddresses";
 import { useState } from "react";
@@ -36,7 +36,8 @@ export default function AccountPage() {
             menuItem: "Wishlist",
             render: () => (
                 <Tab.Pane>
-                    <p>My Wishlist</p>
+                    <Wishlist />
+                    <Separator height={80} />
                 </Tab.Pane>
             )
         },
