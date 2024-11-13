@@ -5,7 +5,7 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 const cartCtrl = new Cart();
 
 interface CartContextType { 
-    cart: CartItem[] | null; 
+    cart: Cart[] | null; 
     total: number; 
     addCart: (gameId: number) => void; 
     deleteItem: (itemId: number) => void; 
@@ -24,13 +24,11 @@ const [cart, setCart]= useState(null)
 const [total, setTotal]= useState(0)
 
 useEffect(() => {
-    (async () => {
-        try {
 
-        } catch (error) {
-            console.error(error);
-        }
-    })()
+   const response = cartCtrl.getAll()
+   setCart(response);
+   
+    
 }, [])
 
 const addCart = (gameId: number)=>{
