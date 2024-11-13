@@ -1,7 +1,18 @@
 'use client';
+import { Cart } from "@/api";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
-export const CartContext = createContext(null)
+const cartCtrl = new Cart();
+
+interface CartContextType { 
+    cart: CartItem[] | null; 
+    total: number; 
+    addCart: (gameId: number) => void; 
+    deleteItem: (itemId: number) => void; 
+    deleteAllItems: () => void; 
+    changeQuantityItem: (itemId: number, quantity: number) => void; }
+
+export const CartContext = createContext<CartContextType | undefined>(undefined)
 
 type CartProviderProps = {
     children: ReactNode;
@@ -22,9 +33,13 @@ useEffect(() => {
     })()
 }, [])
 
+const addCart = (gameId: number)=>{
+    cartCtrl.add(gameId)
+}
+
     const data = {
         cart,
-        addCart: () => {},
+        addCart,
         total,
         deleteItem: () => {},
         deleteAllItems: () => {},
