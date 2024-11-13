@@ -3,6 +3,7 @@ import { Home } from "@/components/Home";
 import { BannerAd, BarTrust, Separator } from "@/components/Shared";
 import { Container } from "semantic-ui-react";
 
+import { useCart } from "@/hooks";
 
 const platformsId = {
     playStation: 1,
@@ -12,6 +13,8 @@ const platformsId = {
 }
 
 export default function HomePage() {
+    console.log(useCart());
+    
     return (
         <BasicLayout>
             <Home.BannerLastGamePublished />
