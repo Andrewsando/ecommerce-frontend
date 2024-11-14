@@ -1,7 +1,7 @@
 'use client';
 import { Button, Container, Icon, Image } from 'semantic-ui-react';
 import styles from './Panel.module.scss'
-import { fn } from '@/app/utils/functions';
+import { fn } from '@/utils/functions';
 import { WishlistIcon } from '@/components/Shared';
 import { useCart } from '@/hooks';
 import { useState } from 'react';

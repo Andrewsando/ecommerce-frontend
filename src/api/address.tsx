@@ -1,5 +1,5 @@
-import { ENV } from '@/app/utils/constants';
-import { authFetch } from "@/app/utils/authFetch";
+import { ENV } from '@/utils/constants';
+import { authFetch } from "@/utils/authFetch";
 
 export class Address {
     async create(data: Record<string, any>, userId: number) {

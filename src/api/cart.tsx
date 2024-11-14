@@ -1,4 +1,4 @@
-import { ENV } from '@/app/utils/constants';
+import { ENV } from '@/utils/constants';
 import { forEach } from 'lodash';
 
 interface CartItem { id: number; quantity: number; };

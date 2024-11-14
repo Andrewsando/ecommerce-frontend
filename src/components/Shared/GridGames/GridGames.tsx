@@ -1,6 +1,6 @@
 import styles from './GridGames.module.scss';
 import { map } from 'lodash';
-import { fn } from '@/app/utils/functions';
+import { fn } from '@/utils/functions';
 import Link from 'next/link';
 import { Label } from '../Label';
 

@@ -1,3 +1,4 @@
+'use client';
 import { Image, Icon, Input } from "semantic-ui-react";
 import { useEffect, useState } from "react";
 import { Platform as PlatformAPI } from "@/api"; // Renombrado aquí

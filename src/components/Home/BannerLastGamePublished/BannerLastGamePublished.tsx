@@ -2,7 +2,7 @@ import { Game } from "@/api";
 import { useEffect, useState } from "react";
 import { Image, Container } from "semantic-ui-react";
 import { DateTime } from 'luxon';
-import { fn } from '@/app/utils/functions';
+import { fn } from '@/utils/functions';
 import { Label } from "@/components/Shared";
 import Link from 'next/link';
 import styles from './BannerLastGamePublished.module.scss';
