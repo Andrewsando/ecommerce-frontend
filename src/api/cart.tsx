@@ -1,12 +1,18 @@
 import { ENV } from '@/app/utils/constants';
+import { forEach } from 'lodash';
+
+interface CartItem { id: number; quantity: number; };
 
 export class Cart {
     add(gameId: any) {
         const games = this.getAll();
-        const objIndex = games.findIndex((game) => game.id === gameId)
+        const objIndex = games.findIndex((game: CartItem) => game.id === gameId)
 
         if (objIndex < 0) {
-            gameId.push({ id: gameId, quantity: 1 })
+            console.log(123,objIndex);
+            console.log(1234,gameId);
+            
+            games.push({ id: gameId, quantity: 1 })
         } else {
             const game = games[objIndex]
             games[objIndex].quantity = game.quantity + 1;
@@ -23,5 +29,16 @@ export class Cart {
         } else {
             return JSON.parse(response)
         }
+    }
+
+    count() {
+        const response = this.getAll();
+        let count = 0;
+
+        forEach(response, (item) => {
+            count += item.quantity;
+            
+        })
+        return count;
     }
 }

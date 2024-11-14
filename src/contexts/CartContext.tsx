@@ -21,18 +21,24 @@ type CartProviderProps = {
 export function CartProvider({children}:CartProviderProps){
 
 const [cart, setCart]= useState(null)
-const [total, setTotal]= useState(0)
+const [total, setTotal]= useState<number>(cartCtrl.count());
+
 
 useEffect(() => {
 
    const response = cartCtrl.getAll()
    setCart(response);
-   
     
 }, [])
 
 const addCart = (gameId: number)=>{
-    cartCtrl.add(gameId)
+    cartCtrl.add(gameId);
+    refreshTotalCart();
+}
+
+const refreshTotalCart = () =>{
+    setTotal(cartCtrl.count());
+    setCart(cartCtrl.getAll());
 }
 
     const data = {

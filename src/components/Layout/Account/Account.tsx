@@ -1,15 +1,17 @@
 "use client"
 import { Button, Icon, Label } from "semantic-ui-react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/hooks";
+import { useAuth, useCart } from "@/hooks";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
 import styles from "./Account.module.scss";
 
-const total = 5;
+
+
 
 export function Account() {
     const { user } = useAuth();
+    const { total } = useCart();
     const router = useRouter();
 
     const goToLogin = () => router.push('/join/sign-in');
