@@ -12,7 +12,7 @@ import Link from "next/link";
 
 interface MenuProps {
   isOpenSearch: boolean,
-  params: { platform: string }
+  // params: { platform: string }
 }
 
 interface Platform {
@@ -32,7 +32,7 @@ interface Platform {
 
 const platformCtrl = new PlatformAPI();
 
-export function Menu({ isOpenSearch, params }: MenuProps) {
+export function Menu({ isOpenSearch }: MenuProps) {
   const [platforms, setPlatforms] = useState<Platform[] | null>(null);
   const [showSearch, setShowSearch] = useState(isOpenSearch);
   const [searchText, setSearchText] = useState("");

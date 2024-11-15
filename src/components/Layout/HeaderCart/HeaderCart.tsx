@@ -3,20 +3,13 @@ import Link from 'next/link';
 import styles from './HeaderCart.module.scss';
 import { Icon, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import classNames from 'classnames';
 
 export function HeaderCart() {
     const searchParams = useSearchParams();
-    const router = useRouter();
 
-    if (!searchParams.get('step')) {
-        const defaultParams = new URLSearchParams(searchParams);
-        defaultParams.set('step', '1');
-        router.replace(`?${defaultParams.toString()}`);
-    }
-
-    const currentStep = searchParams.get('step');
+    const currentStep = searchParams.get('step')||1;
 
     const steps = [
         { number: 1, title: "Basket" },
