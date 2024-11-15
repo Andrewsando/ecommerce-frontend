@@ -27,6 +27,14 @@
             gap: 5px;
             margin: 0;
             padding: 0;
+
+            > a{
+                color: #ffff;
+
+                &:hover{
+                    color: $primary
+                }
+            }
         }
 
         &.social {
