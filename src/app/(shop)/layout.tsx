@@ -8,7 +8,7 @@ interface CartLayoutProps {
 
 export default function CartLayout({ children }: CartLayoutProps) {
 
-    const bgColor = {backgroundColor:"#272727"}
+    const bgColor = {backgroundColor:"#272727", color:"#fff"}
     return (
 
         <body style={bgColor}>

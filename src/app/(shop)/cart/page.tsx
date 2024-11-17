@@ -1,7 +1,7 @@
 'use client';
 import { Game } from '@/api';
+import { Cart } from '@/components/Cart';
 import { useCart } from '@/hooks';
-import { map } from 'lodash';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -20,7 +20,6 @@ export default function CartPage() {
     const currentStep = Number(step)
     const [games, setGames] = useState<Item[] | null >(null)
     const {cart} = useCart();
-    // console.log({cart});
     
     useEffect(() => {
         (async () => {
@@ -42,7 +41,7 @@ export default function CartPage() {
     return (
 
         <div>
-            {currentStep === 1 && <p>Step One</p>}
+            {currentStep === 1 && <Cart.StepOne games={games} />}
             {currentStep === 2 && <p>Step Two</p>}
             {currentStep === 3 && <p>Step Three</p>}
         </div>
