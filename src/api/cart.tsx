@@ -9,9 +9,9 @@ export class Cart {
         const objIndex = games.findIndex((game: CartItem) => game.id === gameId)
 
         if (objIndex < 0) {
-            console.log(123,objIndex);
-            console.log(1234,gameId);
-            
+            console.log(123, objIndex);
+            console.log(1234, gameId);
+
             games.push({ id: gameId, quantity: 1 })
         } else {
             const game = games[objIndex]
@@ -37,8 +37,17 @@ export class Cart {
 
         forEach(response, (item) => {
             count += item.quantity;
-            
+
         })
         return count;
+    }
+
+    changeQuantity(gameId: number, quantity: number) {
+        const games = this.getAll();
+        const objIndex = games.findIndex((game:any) => game.id === gameId);
+
+        games[objIndex].quantity = quantity;
+
+        localStorage.setItem(ENV.CART, JSON.stringify(games))
     }
 }

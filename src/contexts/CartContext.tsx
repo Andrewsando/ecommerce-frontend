@@ -41,13 +41,19 @@ const refreshTotalCart = () =>{
     setCart(cartCtrl.getAll());
 }
 
+const changeQuantityItem = (gameId:number, quantity:number)=> {
+cartCtrl.changeQuantity(gameId,quantity)
+refreshTotalCart()
+    
+}
+
     const data = {
         cart,
         addCart,
         total,
         deleteItem: () => {},
         deleteAllItems: () => {},
-        changeQuantityItem: () => {},
+        changeQuantityItem,
     }
 
     return <CartContext.Provider value={data}>
