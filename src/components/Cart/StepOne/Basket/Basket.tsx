@@ -14,7 +14,8 @@ const options = Array.from({ length: 50 }, (_, index) => {
 });
 
 export function Basket({ games }: BasketProps) {
-    const { changeQuantityItem } = useCart();
+
+    const { changeQuantityItem, deleteItem } = useCart();
 
     return (
         <div className={styles.basket}>
@@ -33,7 +34,11 @@ export function Basket({ games }: BasketProps) {
                                         <p>{title}</p>
                                         <p>{platform?.data?.attributes?.Title}</p>
                                     </div>
-                                    <Icon name="trash alternate outline" link />
+                                    <Icon
+                                        name="trash alternate outline"
+                                        link
+                                        onClick={()=>deleteItem(game.id)}
+                                    />
                                 </div>
 
                                 <div className={styles.quantity}>
@@ -43,7 +48,7 @@ export function Basket({ games }: BasketProps) {
                                         selection
                                         value={game.quantity}
                                         compact
-                                        onChange={(_,data) => changeQuantityItem(game.id, data.value)}
+                                        onChange={(_, data) => changeQuantityItem(game.id, data.value)}
                                     />
                                     <span>
                                         ${fn.calcDiscountedPrice(price, discount)}

@@ -43,15 +43,19 @@ const refreshTotalCart = () =>{
 
 const changeQuantityItem = (gameId:number, quantity:number)=> {
 cartCtrl.changeQuantity(gameId,quantity)
-refreshTotalCart()
-    
+refreshTotalCart()   
+}
+
+const deleteItem = (gameId:number) => {
+cartCtrl.delete(gameId)
+refreshTotalCart();
 }
 
     const data = {
         cart,
         addCart,
         total,
-        deleteItem: () => {},
+        deleteItem,
         deleteAllItems: () => {},
         changeQuantityItem,
     }
