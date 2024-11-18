@@ -9,7 +9,7 @@ import { useAuth } from '@/hooks'
 interface WishlistIconProps {
     gameId: number,
     className: any,
-    removeCallback:()=> void
+    removeCallback?:()=> void
 }
 
 const wishlistCtrl = new Wishlist()

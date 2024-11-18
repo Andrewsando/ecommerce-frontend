@@ -1,4 +1,4 @@
-import { ENV } from '@/app/utils/constants';
+import { ENV } from '@/utils/constants';
 
 export class Platform {
     async getAll() {

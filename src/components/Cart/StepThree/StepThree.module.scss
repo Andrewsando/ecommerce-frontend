@@ -1,0 +1,24 @@
+@import "~/src/scss/index.scss";
+
+.stepThree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    >i {
+        font-size: 70px;
+        color: $success;
+    }
+
+    >h2 {
+        margin-bottom: 15px;
+        margin-top: 0px;
+    }
+
+    > a {
+        width: 300px;
+        background-color: $primary !important;
+        padding: 15px 21px !important;
+        font-size: 15px !important;
+    }
+}

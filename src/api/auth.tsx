@@ -1,5 +1,5 @@
 "use client"
-import { ENV } from '@/app/utils/constants';
+import { ENV } from '@/utils/constants';
 
 export class Auth {
     async register(data: any) {

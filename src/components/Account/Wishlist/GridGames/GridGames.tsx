@@ -2,7 +2,7 @@ import { map } from 'lodash';
 import styles from './GridGames.module.scss'
 import Link from 'next/link';
 import { Label, WishlistIcon } from '@/components/Shared';
-import { fn } from '@/app/utils/functions';
+import { fn } from '@/utils/functions';
 
 export function GridGames({ wishlist, onReload }: any) {
 

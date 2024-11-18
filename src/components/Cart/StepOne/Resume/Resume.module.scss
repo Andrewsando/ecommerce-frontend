@@ -1,0 +1,62 @@
+@import "~/src/scss/index.scss";
+
+.resume {
+    > h2 {
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    a{
+        margin-top: 20px;
+        color: $text-secondary;
+        font-size: 12px;
+        align-self: center;
+
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+
+.block{
+    background-color: $background-quaternary;
+    width: 80%;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prices{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    >div{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+
+    >span{
+        font-size: 13px;
+        color: $text-secondary;
+    }
+
+    &:last-of-type {
+        >span {
+            margin-top: 10px;
+            color: #fff;
+            margin-bottom: 10px;
+            &:last-of-type{
+                font-size: 16px;
+            }
+        }
+    }
+}
+}
+.a{
+    background-color: $primary !important;
+    margin-top: 15px !important;
+}
