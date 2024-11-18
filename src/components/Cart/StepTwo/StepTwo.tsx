@@ -1,11 +1,12 @@
 import { Separator } from '@/components/Shared';
-import styles from './StepTwo.module.scss'
 import { Addresses } from './Addresses';
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { ENV } from '@/utils/constants';
 import { Elements } from '@stripe/react-stripe-js';
 import { Payment } from './Payment';
+import { Resume } from './Resume';
+import styles from './StepTwo.module.scss'
 
 type StepTwoProps = {
     games: any[] | null;
@@ -32,7 +33,10 @@ export function StepTwo({ games }: StepTwoProps) {
                 </div>
 
                 <div className={styles.right}>
-                    <p>RESUME</p>
+                    <Resume
+                        games={games}
+                        addressSelected={addressSelected}
+                    />
                 </div>
             </div>
         </Elements>
