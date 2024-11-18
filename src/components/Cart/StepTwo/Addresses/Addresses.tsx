@@ -7,7 +7,12 @@ import classNames from 'classnames';
 
 const addressCtrl = new Address();
 
-export function Addresses({ addressSelected, setAddressSelected }) {
+type AddressesProps = {
+    addressSelected: Record<string, any> | any,
+    setAddressSelected: Record<string, any> | any,
+}
+
+export function Addresses({ addressSelected, setAddressSelected }: AddressesProps) {
     const [addresses, setAddresses] = useState(null);
     const { user } = useAuth();
 
@@ -42,7 +47,6 @@ export function Addresses({ addressSelected, setAddressSelected }) {
                         <p>{name} ({title})</p>
                         <p>{address}, {postal_code}, {state}, {city}</p>
                     </div>
-
                 )
             })}
         </div>
