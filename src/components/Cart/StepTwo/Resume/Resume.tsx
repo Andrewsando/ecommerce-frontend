@@ -56,10 +56,9 @@ export function Resume({ games, addressSelected }: ResumeProps) {
         }
 
         const result = await stripe.createToken(cardElement);
-        
+
         if (result.error) {
             console.log(result.error.message);
-        console.log("error2");
 
         } else {
             const response = await cartCtrl.paymentCart(
@@ -68,13 +67,10 @@ export function Resume({ games, addressSelected }: ResumeProps) {
                 user?.id,
                 addressSelected
             );
-            console.log("entro2");
 
-            if(response.status === 200) {
+            if(response?.status === 200) {
                 deleteAllItems()
                 goToStepEnd()
-        console.log("fallo");
-
             } else {
                 console.log("Error al realizar el pago");
             }
@@ -112,8 +108,8 @@ export function Resume({ games, addressSelected }: ResumeProps) {
                                     <span>{platform.data.attributes.Title}</span>
                                 </div>
                                 <span>
-                                    {game.quantity > 0 && `${game.quantity}x`}
-                                    $ {fn.calcDiscountedPrice(price, discount)}
+                                    {game.quantity > 0 && `${game.quantity} x `}
+                                   $ {fn.calcDiscountedPrice(price, discount)} USD
                                 </span>
                             </div>
                         )
@@ -124,7 +120,7 @@ export function Resume({ games, addressSelected }: ResumeProps) {
             <div className={styles.blockTotal}>
                 <div>
                     <span>Total</span>
-                    <span>$ {total}</span>
+                    <span>$ {total} USD</span>
                 </div>
 
                 <Button
@@ -135,7 +131,7 @@ export function Resume({ games, addressSelected }: ResumeProps) {
                     onClick={onPay}
                     loading={loading}
                 >
-                    Pay
+                    Purchase
                 </Button>
             </div>
         </div>

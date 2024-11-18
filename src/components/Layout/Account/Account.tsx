@@ -30,8 +30,8 @@ export function Account() {
     }
     return (
         <div className={styles.account}>
-            <Button icon className={styles.cart}>
-                <AddShoppingCartIcon name="shop" onClick={goToCart} />
+            <Button icon className={styles.cart} onClick={goToCart}>
+                <AddShoppingCartIcon name="shop" />
                 {total > 0 && <Label circular>{total}</Label>}
             </Button>
 
