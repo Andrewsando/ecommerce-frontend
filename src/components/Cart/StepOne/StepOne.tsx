@@ -3,7 +3,7 @@ import { Resume } from './Resume';
 import styles from './StepOne.module.scss'
 
 interface StepOneProps {
-    games:any[]
+    games:any[];
 }
 
 export function StepOne ({games}:StepOneProps){

@@ -38,12 +38,12 @@ export function Resume({ games }: any) {
         setTotals(totals)
     }, [games])
 
-    const goToStepTwo= () => { 
+    const goToStepTwo = () => {
         const currentParams = new URLSearchParams(searchParams)
         currentParams.set('step', '2')
         window.history.replaceState(null, '', `?${currentParams.toString()}`);
         console.log('papiii');
-        
+
     };
 
     if (!totals) return null

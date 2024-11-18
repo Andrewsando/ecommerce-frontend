@@ -5,11 +5,6 @@ import { useCart } from '@/hooks';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-interface Item {
-    id: number;
-    quantity: number
-}
-
 const gameCtrl = new Game();
 
 export default function CartPage() {
@@ -18,13 +13,13 @@ export default function CartPage() {
     const step = searchParams.get('step')||1;
 
     const currentStep = Number(step)
-    const [games, setGames] = useState<Item[] | null >(null)
+    const [games, setGames] = useState<any[] >([])
     const {cart} = useCart();
     
     useEffect(() => {
         (async () => {
             try {
-                const data:Item[] = [];
+                const data:any[] = [];
                 if(cart){
                     for await(const item of cart) {
                             const response = await gameCtrl.getGameById(item.id)
@@ -42,7 +37,7 @@ export default function CartPage() {
 
         <div>
             {currentStep === 1 && <Cart.StepOne games={games} />}
-            {currentStep === 2 && <p>Step Two</p>}
+            {currentStep === 2 && <Cart.StepTwo games={games}  />}
             {currentStep === 3 && <p>Step Three</p>}
         </div>
 
