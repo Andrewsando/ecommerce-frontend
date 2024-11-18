@@ -1,18 +1,28 @@
 import { useEffect, useState } from 'react'
-import styles from './Resume.module.scss'
 import { forEach, map } from 'lodash'
 import { fn } from '@/utils/functions'
 import { Button } from 'semantic-ui-react'
+import { Cart } from '@/api'
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
+import { useAuth, useCart } from '@/hooks'
+import { useSearchParams } from 'next/navigation'
+import styles from './Resume.module.scss'
 
 interface ResumeProps {
     games: Record<string, any> | any,
     addressSelected: Record<string, any> | any
 }
 
+const cartCtrl = new Cart();
+
 export function Resume({ games, addressSelected }: ResumeProps) {
     const [total, setTotal] = useState<string | null>(null);
-
-
+    const [loading, setLoading] = useState<boolean>(false);
+    const stripe = useStripe();
+    const elements = useElements();
+    const { user } = useAuth()
+    const searchParams = useSearchParams();
+    const { deleteAllItems } = useCart()
 
     useEffect(() => {
         let totalTemp: number = 0;
@@ -23,10 +33,65 @@ export function Resume({ games, addressSelected }: ResumeProps) {
 
             totalTemp += price * game.quantity
         })
-
         setTotal(totalTemp.toFixed(2))
-
     }, [games])
+
+    const onPay = async () => {
+        setLoading(true)
+        console.log("entro");
+        
+
+        if (!stripe || !elements) {
+            setLoading(false)
+        console.log("no hay");
+
+            return
+        }
+
+        const cardElement = elements?.getElement(CardElement);
+
+        if (!cardElement) {
+            console.error('El elemento de la tarjeta no está disponible');
+            return;
+        }
+
+        const result = await stripe.createToken(cardElement);
+        
+        if (result.error) {
+            console.log(result.error.message);
+        console.log("error2");
+
+        } else {
+            const response = await cartCtrl.paymentCart(
+                result.token,
+                games,
+                user?.id,
+                addressSelected
+            );
+            console.log("entro2");
+
+            if(response.status === 200) {
+                deleteAllItems()
+                goToStepEnd()
+        console.log("fallo");
+
+            } else {
+                console.log("Error al realizar el pago");
+            }
+        }
+
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000)
+    }
+
+    const goToStepEnd = () => {
+        const currentParams = new URLSearchParams(searchParams)
+        currentParams.set('step', '3')
+        window.history.replaceState(null, '', `?${currentParams.toString()}`);
+    }
+
+    if (!total) return null
 
     return (
 
@@ -37,7 +102,6 @@ export function Resume({ games, addressSelected }: ResumeProps) {
                 <div className={styles.products}>
                     {map(games, (game) => {
                         const { title, platform, price, discount } = game.attributes;
-                        console.log(platform);
                         return (
                             <div
                                 key={game.id}
@@ -58,14 +122,21 @@ export function Resume({ games, addressSelected }: ResumeProps) {
             </div>
 
             <div className={styles.blockTotal}>
-                    <div>
-                        <span>Total</span>
-                        <span>$ {total}</span>                     
-                    </div>
+                <div>
+                    <span>Total</span>
+                    <span>$ {total}</span>
+                </div>
 
-                    <Button primary fluid disabled={!addressSelected} className={styles.button}>
-                        Pay 
-                    </Button>
+                <Button
+                    primary
+                    fluid
+                    disabled={!addressSelected}
+                    className={styles.button}
+                    onClick={onPay}
+                    loading={loading}
+                >
+                    Pay
+                </Button>
             </div>
         </div>
     )

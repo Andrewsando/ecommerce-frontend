@@ -51,12 +51,17 @@ cartCtrl.delete(gameId)
 refreshTotalCart();
 }
 
+const deleteAllItems = () =>{
+    cartCtrl.deleteAll();
+    refreshTotalCart();
+}
+
     const data = {
         cart,
         addCart,
         total,
         deleteItem,
-        deleteAllItems: () => {},
+        deleteAllItems,
         changeQuantityItem,
     }
 

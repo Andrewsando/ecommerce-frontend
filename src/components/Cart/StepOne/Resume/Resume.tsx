@@ -42,8 +42,6 @@ export function Resume({ games }: any) {
         const currentParams = new URLSearchParams(searchParams)
         currentParams.set('step', '2')
         window.history.replaceState(null, '', `?${currentParams.toString()}`);
-        console.log('papiii');
-
     };
 
     if (!totals) return null

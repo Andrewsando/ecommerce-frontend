@@ -21,7 +21,6 @@ export function Addresses({ addressSelected, setAddressSelected }: AddressesProp
             try {
                 const response = await addressCtrl.getAll(user?.id)
                 setAddresses(response.data)
-                console.log({ addresses });
             } catch (error) {
                 console.error(error);
             }

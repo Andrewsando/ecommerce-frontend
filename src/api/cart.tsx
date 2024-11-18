@@ -1,3 +1,4 @@
+import { authFetch } from '@/utils/authFetch';
 import { ENV } from '@/utils/constants';
 import { forEach } from 'lodash';
 
@@ -44,18 +45,46 @@ export class Cart {
 
     changeQuantity(gameId: number, quantity: number) {
         const games = this.getAll();
-        const objIndex = games.findIndex((game:any) => game.id === gameId);
+        const objIndex = games.findIndex((game: any) => game.id === gameId);
 
         games[objIndex].quantity = quantity;
 
         localStorage.setItem(ENV.CART, JSON.stringify(games))
     }
 
-    delete(gameId: number){
+    delete(gameId: number) {
         const games = this.getAll();
-        const updateGames = games.filter((game:any) => game.id !== gameId)
+        const updateGames = games.filter((game: any) => game.id !== gameId)
 
         localStorage.setItem(ENV.CART, JSON.stringify(updateGames))
- 
+
+    }
+
+    deleteAll() {
+        localStorage.removeItem(ENV.CART)
+    }
+
+    async paymentCart(token: any, products: any, idUser: number, address: any) {
+        try {
+
+            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.PAYMENT_ORDER}`;
+            const params = {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    token,
+                    products,
+                    idUser,
+                    addressShipping: address,
+                }),
+            }
+            const response = await authFetch(url, params)
+
+            return response;
+        } catch (error) {
+            throw error
+        }
     }
 }
