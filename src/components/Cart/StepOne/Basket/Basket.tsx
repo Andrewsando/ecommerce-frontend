@@ -37,22 +37,22 @@ export function Basket({ games }: BasketProps) {
                                     <Icon
                                         name="trash alternate outline"
                                         link
-                                        onClick={()=>deleteItem(game.id)}
+                                        onClick={() => deleteItem(game.id)}
                                     />
                                 </div>
 
                                 <div className={styles.quantity}>
+                                    <span>
+                                        ${fn.calcDiscountedPrice(price, discount)}
+                                    </span>
                                     <Dropdown
                                         className="number"
                                         options={options}
                                         selection
                                         value={game.quantity}
                                         compact
-                                        onChange={(_, data) => changeQuantityItem(game.id, data.value)}
+                                        onChange={(_, data: any) => changeQuantityItem(game.id, data.value)}
                                     />
-                                    <span>
-                                        ${fn.calcDiscountedPrice(price, discount)}
-                                    </span>
                                 </div>
                             </div>
                         </div>
