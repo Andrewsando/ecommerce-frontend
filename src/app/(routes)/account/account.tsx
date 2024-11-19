@@ -1,7 +1,7 @@
 'use client'
 import { BasicLayout } from "@/layouts";
 import { Tab } from "semantic-ui-react";
-import { Address, Info, Settings, Wishlist } from "@/components/Account";
+import { Address, Info, Orders, Settings, Wishlist } from "@/components/Account";
 import { useAuth } from "@/hooks";
 import { useRouter } from "next/navigation";
 import { Separator, WishlistIcon } from "@/components/Shared";
@@ -10,6 +10,8 @@ import { ListAddresses } from "@/components/Account/Address/ListAddresses";
 import { useState } from "react";
 
 export default function AccountPage() {
+    console.log({ Tab });
+
     const { logout, user } = useAuth();
     const router = useRouter();
     const [reload, setReload] = useState(false);
@@ -19,7 +21,7 @@ export default function AccountPage() {
         return null;
     }
 
-    const onReload = ():void => {
+    const onReload = (): void => {
         setReload(prevState => !prevState);
     };
 
@@ -27,8 +29,9 @@ export default function AccountPage() {
         {
             menuItem: "Mis pedidos",
             render: () => (
-                <Tab.Pane>
-                    <p>My orders</p>
+                <Tab.Pane attached={false}>
+                    <Orders />
+                    <Separator height={80} />
                 </Tab.Pane>
             )
         },
