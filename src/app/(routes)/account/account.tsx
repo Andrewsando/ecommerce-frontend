@@ -27,7 +27,7 @@ export default function AccountPage() {
 
     const panes = [
         {
-            menuItem: "Mis pedidos",
+            menuItem: "My orders",
             render: () => (
                 <Tab.Pane attached={false}>
                     <Orders />
@@ -55,7 +55,7 @@ export default function AccountPage() {
             )
         },
         {
-            menuItem: { key: 20, icon: "settings", content: "Ajustes" },
+            menuItem: { key: 20, icon: "settings", content: "Settings" },
             render: () => (
                 <Tab.Pane>
                     <Settings.ChangeNameForm />
