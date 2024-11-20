@@ -1,5 +1,5 @@
+'use client';
 import { Game } from '@/api'
-import styles from './LatestGames.module.scss'
 import { useEffect, useState } from 'react';
 import { GridGames } from '@/components/Shared';
 
