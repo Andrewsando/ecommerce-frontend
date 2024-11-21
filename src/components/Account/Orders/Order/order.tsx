@@ -53,10 +53,10 @@ export function Order({ order }: OrderProps) {
                 title="Order information"
             >
                 {map(products, (product) => {
-                    const { cover, title, platform, price, discount } = product.attributes
+                    const { cover, title, platform, price, discount, id } = product.attributes
                     return (
 
-                        <div className={style.product}>
+                        <div className={style.product} key={id}>
                             <Image src={cover.data.attributes.url} />
 
                             <div>
