@@ -22,7 +22,7 @@ const userCtrl = new User();
 export function AuthProvider(props: any) {
 
     const { children } = props
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({});
     const [token, setToken] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -69,7 +69,7 @@ export function AuthProvider(props: any) {
     const logout = () => {
         tokenCtrl.removeToken();
         setToken(null);
-        setUser(null);
+        setUser({});
 
     };
 
@@ -78,7 +78,6 @@ export function AuthProvider(props: any) {
             ...user,
             [key]: value,
         })
-
     };
 
     const data = {
