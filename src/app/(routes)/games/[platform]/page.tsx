@@ -1,8 +1,15 @@
-import { Platform, Game } from "@/api"
+import { Game } from "@/api"
 import { GridGames, NoResult, Pagination, Separator } from "@/components/Shared";
 import { BasicLayout } from "@/layouts";
 import { size } from "lodash";
 import { Container } from "semantic-ui-react";
+import type { Metadata } from 'next'; 
+
+export const metadata: Metadata = { 
+    title: 'Games', 
+    description: 'Find the best details and prices of your favorite games.', 
+};
+
 
 export default async function PlatformPage({ params, searchParams }:
     {
@@ -11,9 +18,6 @@ export default async function PlatformPage({ params, searchParams }:
     }) {
     const { platform } = params
     const page = searchParams.page || 1
-
-    const platformCtrl = new Platform();
-    const responsePlatform = await platformCtrl.getBySlug(platform)
 
     const gameCtrl = new Game();
     const responseGame = await gameCtrl.getGamesByPlatformSlug(platform, page)

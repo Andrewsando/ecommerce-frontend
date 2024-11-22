@@ -5,6 +5,7 @@ import { useCart } from '@/hooks';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+
 const gameCtrl = new Game();
 
 export default function CartPage() {

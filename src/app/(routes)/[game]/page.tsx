@@ -3,6 +3,18 @@ import { Game as GameComponent } from "@/components/Game";
 import { Separator } from "@/components/Shared";
 import { BasicLayout } from "@/layouts";
 
+
+export async function generateMetadata({ params }: any) {
+    const { game } = params;
+    const gameCtrl = new GameClass();
+    const response = await gameCtrl.getBySlug(game);
+
+    return {
+        title: `${response?.attributes.title}`,
+        description: response?.attributes.description,
+    };
+}
+
 export default async function Game({ params }:
     {
         params: { game: string }
@@ -11,7 +23,7 @@ export default async function Game({ params }:
 
     const gameCtrl = new GameClass()
     const response = await gameCtrl.getBySlug(game)
-    
+
     const wallpaper = response?.attributes.wallpaper.data.attributes.url
 
     return response && (

@@ -8,8 +8,8 @@ export function BarTrust() {
         <div className={styles.barTrust}>
             <Container className={styles.content}>
                 {map(data, (item) => (
-                    <div className={styles.block}>
-                        <Icon name={item.icon} />
+                    <div className={styles.block} key={item.id}>
+                        <Icon name={item?.icon} />
                         <div>
                             <h5>{item.title}</h5>
                             <span>{item.description}</span>
