@@ -10,8 +10,8 @@ export function initialValues() {
 
 export function validationSchema(){
     return Yup.object({
-        identifier: Yup.string().required(true),
-        password: Yup.string().required(true),
+        identifier: Yup.string().required('Identifier is mandatory'),
+        password: Yup.string().required('Password is mandatory'),
 
     })
 }
