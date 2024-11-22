@@ -35,7 +35,6 @@ export function WishlistIcon({ gameId, className, removeCallback}: WishlistIconP
 
     const addWishlist = async () => {
         const response = await wishlistCtrl.add(user?.id, gameId)
-        console.log(response);
         setHasWishList(response);
 
     }

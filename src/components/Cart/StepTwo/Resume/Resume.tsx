@@ -37,13 +37,10 @@ export function Resume({ games, addressSelected }: ResumeProps) {
     }, [games])
 
     const onPay = async () => {
-        setLoading(true)
-        console.log("entro");
-        
+        setLoading(true)        
 
         if (!stripe || !elements) {
             setLoading(false)
-        console.log("no hay");
 
             return
         }
@@ -72,7 +69,7 @@ export function Resume({ games, addressSelected }: ResumeProps) {
                 deleteAllItems()
                 goToStepEnd()
             } else {
-                console.log("Error al realizar el pago");
+                console.log("Error when making payment");
             }
         }
 
