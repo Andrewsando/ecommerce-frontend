@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export function initialValues(address){
+export function initialValues(address: Record<string, any>){
     return{
         title: address?.title || "",
         name: address?.name ||"",
