@@ -12,19 +12,19 @@ export class Token {
         return localStorage.getItem(ENV.TOKEN);
     }
 
-    hasExpired(token: string) {
+    hasExpired(token: string): boolean {
         const tokenDecode = jwtDecode(token);
-        const expireDate = tokenDecode.exp * 1000;
+        const expireDate = tokenDecode?.exp ? tokenDecode.exp * 1000 : null;
         const currentDate = new Date().getTime();
 
-        if (currentDate > expireDate) {
+        if (expireDate && currentDate > expireDate) {
             return true;
         }
 
         return false;
     }
 
-    removeToken(){
+    removeToken() {
         localStorage.removeItem(ENV.TOKEN);
     }
 }
