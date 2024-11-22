@@ -1,6 +1,6 @@
 import { BasicLayout } from "@/layouts";
 import { Home } from "@/components/Home";
-import { BannerAd, BarTrust, Seo, Separator } from "@/components/Shared";
+import { BannerAd, BarTrust, Separator } from "@/components/Shared";
 import { Container } from "semantic-ui-react";
 
 
