@@ -10,7 +10,6 @@ import { ListAddresses } from "@/components/Account/Address/ListAddresses";
 import { useState } from "react";
 
 export default function AccountPage() {
-    console.log({ TabPane });
 
     const { logout, user } = useAuth();
     const router = useRouter();

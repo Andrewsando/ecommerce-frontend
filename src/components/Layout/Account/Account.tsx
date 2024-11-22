@@ -20,11 +20,9 @@ export function Account() {
     const goToCart = () => {
         if (!user) {
             goToLogin();
-            console.log('no user');
-            
+           
         }
         else {
-            console.log('user');
             router.push('cart')
         }
     }

@@ -7,7 +7,6 @@ interface VideoProps {
 }
 
 export function Video({video}: VideoProps) {
-    console.log({video});
     
     return (
         <ReactPlayer 

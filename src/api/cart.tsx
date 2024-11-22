@@ -10,9 +10,6 @@ export class Cart {
         const objIndex = games.findIndex((game: CartItem) => game.id === gameId)
 
         if (objIndex < 0) {
-            console.log(123, objIndex);
-            console.log(1234, gameId);
-
             games.push({ id: gameId, quantity: 1 })
         } else {
             const game = games[objIndex]

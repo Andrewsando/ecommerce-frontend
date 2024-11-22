@@ -10,8 +10,6 @@ const orderCtrl = new Order()
 export function Orders() {
     const [ orders, setOrders ] = useState(null);
     const { user } = useAuth()
-
-    console.log({orders});
     
     useEffect(() => {
         (async () => {
