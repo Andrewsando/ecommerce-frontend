@@ -26,9 +26,9 @@ export default function HomePage() {
                 <Separator height={100} />
                 <Container>
                     <Home.LatestGames
-                        title='playStation'
+                        title='PlayStation'
                         limit={3}
-                        platformId={platformsId.pc}
+                        platformId={platformsId.playStation}
                     />
                 </Container>
                 <Separator height={100} />
