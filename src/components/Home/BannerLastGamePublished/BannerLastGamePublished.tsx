@@ -32,7 +32,7 @@ interface GameData {
   attributes: GameAttributes;
 }
 
-export function BannerLastGamePublished() {
+export function  BannerLastGamePublished() {
   const [game, setGame] = useState<GameData | null>(null);
 
   useEffect(() => {
@@ -64,9 +64,9 @@ export function BannerLastGamePublished() {
           </span>
 
           <h2>{game.attributes.title}</h2>
-          <p>$ {game.attributes.price}USD</p>
-          <Label.Discount>{game.attributes.discount}</Label.Discount>
-          <span className={styles.finalPrice}>{price}</span>
+          <p>$ {game.attributes.price} USD</p>
+          <Label.Discount>{game.attributes.discount} %</Label.Discount>
+          <span className={styles.finalPrice}>$ {price} USD</span>
         </Container>
       </Link>
     </div>
