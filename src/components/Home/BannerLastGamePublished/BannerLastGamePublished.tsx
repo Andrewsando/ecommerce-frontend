@@ -64,7 +64,7 @@ export function BannerLastGamePublished() {
           </span>
 
           <h2>{game.attributes.title}</h2>
-          <p>{game.attributes.price}</p>
+          <p>$ {game.attributes.price}USD</p>
           <Label.Discount>{game.attributes.discount}</Label.Discount>
           <span className={styles.finalPrice}>{price}</span>
         </Container>
