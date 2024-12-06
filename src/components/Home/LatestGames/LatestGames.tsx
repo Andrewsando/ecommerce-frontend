@@ -24,6 +24,9 @@ export function LatestGames(props: LatestGamesProps) {
             try {
                 const response = await gameCtrl.getLatestPublished({ limit, platformId })
                 setGames(response.data);
+                console.log({response});
+                console.log({games});
+                
             } catch (error) {
                 console.log(error);
 
