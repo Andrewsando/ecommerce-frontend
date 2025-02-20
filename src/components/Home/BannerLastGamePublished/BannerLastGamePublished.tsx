@@ -40,10 +40,8 @@ export function  BannerLastGamePublished() {
       try {
         const response = await gameCtrl.getLastPublished();
         setGame(response.data[0]);
-        console.log(game);
-        
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
     })();
   }, []);

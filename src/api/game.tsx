@@ -23,9 +23,9 @@ export class Game {
         }
     }
 
-    async getLatestPublished( {limit = 9, platformId = null}){
+    async getLatestPublished( {limit = 9, platformId=null}){
         try {
-            const filterPlatform =platformId&& `filters[platform][id][$eq]=${platformId}`;
+            const filterPlatform = platformId && `filters[platform][id][$eq]=${platformId}`;
             const paginationLimit = `pagination[limit]=${limit}`;  
             const sort = `sort[0]=publishedAt:desc`;
             const populate ="populate=*"

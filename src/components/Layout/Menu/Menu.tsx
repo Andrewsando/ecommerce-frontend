@@ -49,7 +49,7 @@ export function Menu({ isOpenSearch }: MenuProps) {
         setPlatforms(response.data);
         
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
     })();
   }, []);

@@ -16,6 +16,8 @@ interface LatestGamesProps {
 export function LatestGames(props: LatestGamesProps) {
 
     const { title, limit = 9, platformId = null } = props;
+    console.log({platformId});
+    
 
     const [games, setGames] = useState(null);
 

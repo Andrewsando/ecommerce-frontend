@@ -6,11 +6,11 @@ import { Container } from "semantic-ui-react";
 
 export default async function SearchPage({ searchParams }:
     {
-        searchParams: { s: string }
+        searchParams: Promise<{ s: string }>
     }) {
 
     const gameCtrl = new Game();
-    const response = await gameCtrl.searchGames(searchParams.s, 1);
+    const response = await gameCtrl.searchGames((await searchParams).s, 1);
 
     const paginationGame = response.meta.pagination
     const hasProducts = size(response.data) > 0
@@ -20,7 +20,7 @@ export default async function SearchPage({ searchParams }:
             <BasicLayout relative isOpenSearch={true}>
                 <Container>
                     <Separator height={50} />
-                    <h2>Searching: {searchParams.s}</h2>
+                    <h2>Searching: {(await searchParams).s}</h2>
                     {hasProducts ? (
                         <>
                             <GridGames games={response.data} />

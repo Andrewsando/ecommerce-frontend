@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 
 export default async function PlatformPage({ params, searchParams }:
     {
-        params: { platform: string },
-        searchParams: { page: number }
+        params: Promise<{ platform: string }>,
+        searchParams: Promise<{ page: number }>
     }) {
-    const { platform } = params
-    const page = searchParams.page || 1
+    const { platform } = await params
+    const page = (await searchParams).page || 1
 
     const gameCtrl = new Game();
     const responseGame = await gameCtrl.getGamesByPlatformSlug(platform, page)
