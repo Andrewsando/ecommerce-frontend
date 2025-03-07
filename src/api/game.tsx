@@ -11,7 +11,11 @@ export class Game {
 
             const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${sort}&${pagination}&${populate}`;
             
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers: {
+                    mode: 'no-cors'
+                }
+            });
             const result = await response.json();
 
             if (response.status !== 200) throw result
@@ -33,7 +37,11 @@ export class Game {
             const urlParams = `${sort}&${paginationLimit}&${filterPlatform}&${populate}`
             const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${urlParams}`
             
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers: {
+                    mode: 'no-cors'
+                }
+            });
             const result = await response.json();
 
             if (response.status !== 200) throw result
@@ -54,7 +62,11 @@ export class Game {
             
             const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${urlParams}`
             
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers: {
+                    mode: 'no-cors'
+                }
+            });
             const result = await response.json();
 
             if (response.status !== 200) throw result
@@ -75,7 +87,11 @@ export class Game {
             
             const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${urlParams}`
             
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers: {
+                    mode: 'no-cors'
+                }
+            });
             const result = await response.json();
 
             if (response.status !== 200) throw result
@@ -95,7 +111,11 @@ export class Game {
             
             const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${filters}&${populates}`
             
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers: {
+                    mode: 'no-cors'
+                }
+            });
             const result = await response.json();
 
             if (response.status !== 200) throw result
@@ -113,7 +133,11 @@ export class Game {
             
             const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}/${id}?${populate}`;
             
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers: {
+                    mode: 'no-cors'
+                }
+            });
             const result = await response.json();
 
             if (response.status !== 200) throw result
