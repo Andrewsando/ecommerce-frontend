@@ -6,7 +6,7 @@ import { Container } from "semantic-ui-react";
 
 const platformsId: Record<string, any> = {
     playStation: 2,
-    xbox: 1,
+    Xbox: 1,
     nintendo: 4,
     pc: 3,
 }
